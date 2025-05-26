@@ -8,6 +8,9 @@
 
         public void Add(string item)
         {
+            if(item == null)
+                throw new ArgumentNullException();
+
             //Insert item at the beginning lifo order
             _list.Insert(0, item);
         }
