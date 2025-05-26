@@ -74,8 +74,20 @@ namespace RecentlyUsedListTests
             //Assert
             Assert.Equal(5, recentlyUsedList.Count);
             Assert.Equal("6", recentlyUsedList[0]);
-            Assert.Equal("4", recentlyUsedList[3]);
-            Assert.Equal("5", recentlyUsedList[4]);
+            Assert.Equal("3", recentlyUsedList[3]);
+            Assert.Equal("2", recentlyUsedList[4]);
+        }
+
+        [Fact]
+        public void Indexer_InvalidIndex_ThrowsArgumentOutOfRangeException()
+        {
+            // Arrange
+            var recentlyUsedList = new RecentlyUsedList();
+            recentlyUsedList.Add("1");
+
+            // Act & Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var item = recentlyUsedList[-1]; });
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var item = recentlyUsedList[1]; });
         }
     }
 }
