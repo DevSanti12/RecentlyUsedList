@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace RecentlyUsedListLibrary
+﻿namespace RecentlyUsedListLibrary
 {
     public class RecentlyUsedList
     {
