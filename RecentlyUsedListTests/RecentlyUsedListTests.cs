@@ -39,5 +39,22 @@ namespace RecentlyUsedListTests
             //Act and Assert
             Assert.Throws<ArgumentNullException>(() => recentlyUsedList.Add(nullArg));
         }
+
+        [Fact]
+        public void Add_DuplicateItemIsMovedToTheStart()
+        {
+            // Arrange
+            var recentlyUsedList = new RecentlyUsedList();
+            recentlyUsedList.Add("first");
+            recentlyUsedList.Add("second");
+
+            // Act
+            recentlyUsedList.Add("first");
+
+            // Assert
+            Assert.Equal(2, recentlyUsedList.Count);
+            Assert.Equal("first", recentlyUsedList[0]);
+            Assert.Equal("second", recentlyUsedList[1]);
+        }
     }
 }
