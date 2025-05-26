@@ -13,7 +13,7 @@
             if(capacity < 0)
                 throw new ArgumentOutOfRangeException("Capacity must be greater than zero", nameof(capacity));
 
-            _capacity = capacity;
+            _capacity = (capacity <= 0) ? int.MaxValue : capacity;
         }
 
         public void Add(string item)
