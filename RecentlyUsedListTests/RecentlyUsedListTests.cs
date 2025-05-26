@@ -13,5 +13,19 @@ namespace RecentlyUsedListTests
             //Assert
             Assert.Equal(0, recentlyUsedList.Count);
         }
+
+        [Fact]
+        public void Add_AddsItemToTheList()
+        {
+            //Arrange
+            var recentlyUsedList = new RecentlyUsedList();
+            
+            //Act
+            recentlyUsedList.Add("one");
+
+            //Assert
+            Assert.Equal(1, recentlyUsedList.Count);
+            Assert.Equal("one", recentlyUsedList[0]);
+        }
     }
 }
