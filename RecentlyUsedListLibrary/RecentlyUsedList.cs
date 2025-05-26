@@ -11,6 +11,9 @@
             if(item == null)
                 throw new ArgumentNullException();
 
+            //Remove if item already exists
+            _list.Remove(item);
+
             //Insert item at the beginning lifo order
             _list.Insert(0, item);
         }

@@ -56,5 +56,26 @@ namespace RecentlyUsedListTests
             Assert.Equal("first", recentlyUsedList[0]);
             Assert.Equal("second", recentlyUsedList[1]);
         }
+
+        [Fact]
+        public void Add_WhenCapacityExceeds_RemoveLeastRecentUsedItem()
+        {
+            //Arrange
+            var recentlyUsedList = new RecentlyUsedList(5);
+
+            //Act
+            recentlyUsedList.Add("1");
+            recentlyUsedList.Add("2");
+            recentlyUsedList.Add("3");
+            recentlyUsedList.Add("4");
+            recentlyUsedList.Add("5");
+            recentlyUsedList.Add("6");
+
+            //Assert
+            Assert.Equal(5, recentlyUsedList.Count);
+            Assert.Equal("6", recentlyUsedList[0]);
+            Assert.Equal("4", recentlyUsedList[3]);
+            Assert.Equal("5", recentlyUsedList[4]);
+        }
     }
 }
