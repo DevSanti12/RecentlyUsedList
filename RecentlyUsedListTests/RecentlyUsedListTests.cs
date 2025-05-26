@@ -89,5 +89,20 @@ namespace RecentlyUsedListTests
             Assert.Throws<ArgumentOutOfRangeException>(() => { var item = recentlyUsedList[-1]; });
             Assert.Throws<ArgumentOutOfRangeException>(() => { var item = recentlyUsedList[1]; });
         }
+
+        [Fact]
+        public void Add_UnboundedList_DoesNotRemoveItems()
+        {
+            // Arrange
+            var recentlyUsedList = new RecentlyUsedList(0); // 0 capacity means unbounded
+            for (int i = 1; i <= 100; i++)
+            {
+                recentlyUsedList.Add($"item{i}");
+            }
+
+            // Assert
+            Assert.Equal(100, recentlyUsedList.Count);
+            Assert.Equal("item100", recentlyUsedList[0]);
+        }
     }
 }
